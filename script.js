@@ -56,8 +56,7 @@ class Butterfly {
 	moveRandomLeftOrRight() {
 		if (!this.moveRandomLeftOrRightCounter)
 			this.moveRandomLeftOrRightCounter = {};
-		let f = this.moveRandomLeftOrRightCounter;
-		console.log(f);
+		const f = this.moveRandomLeftOrRightCounter;
 
 		if( !f.callCount ) f.callCount = 0;
 		if( !f.maxCount ) f.maxCount = getRandomInt(50, 150);

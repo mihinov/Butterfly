@@ -11,6 +11,7 @@ body {
 	position: relative;
 	font-family: sans-serif;
 	font-size: 20px;
+	overflow-x: hidden;
 }
 
 img {
