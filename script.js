@@ -38,9 +38,9 @@ class Butterfly {
 	}
 
 	moveUp() {
-	    this.y--;
-	    this.node.style.left = this.x + 'px';
-	    this.node.style.top = this.y + 'px';
+		this.y--;
+		this.node.style.left = this.x + 'px';
+		this.node.style.top = this.y + 'px';
 	}
 
 	moveRight() {
