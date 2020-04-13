@@ -3,24 +3,18 @@ class Butterfly {
 		const calcTraectory = () => {
 			this.widthWindow = window.innerWidth;
 			this.heightWindow = window.innerHeight;
-			const randomWidth = getRandomInt(50, 200);
-			const randomX = getRandomInt(0, this.widthWindow - randomWidth);
-			const randomY = getRandomInt(0, this.heightWindow - randomWidth);
-			this.x = randomX;
-			this.y = randomY;
-			this.lastX = this.x;
-			this.width = randomWidth;
-			this.srcButterfly = srcButterfly;
+			this.randomGenerator();
 		}
+		this.srcButterfly = srcButterfly;
 		window.addEventListener('resize', calcTraectory);
 		calcTraectory();
 		this.draw();
 	}
 
-	randomGenerator(time) {
-		const randomWidth = getRandomInt(50, 200);
+	randomGenerator() {
 		const randomX = getRandomInt(0, this.widthWindow - randomWidth);
 		const randomY = getRandomInt(0, this.heightWindow - randomWidth);
+		const randomWidth = getRandomInt(50, 200);
 		this.x = randomX;
 		this.y = randomY;
 		this.width = randomWidth;
