@@ -12,9 +12,9 @@ class Butterfly {
 	}
 
 	randomGenerator() {
+		const randomWidth = getRandomInt(50, 200);
 		const randomX = getRandomInt(0, this.widthWindow - randomWidth);
 		const randomY = getRandomInt(0, this.heightWindow - randomWidth);
-		const randomWidth = getRandomInt(50, 200);
 		this.x = randomX;
 		this.y = randomY;
 		this.width = randomWidth;
