@@ -31,23 +31,23 @@ class Butterfly {
 		body.prepend(this.node);
 	}
 
-	moveUp() {
-		this.y--;
+	moveUp(factor) {
+		this.y = this.y - factor;
 		this.node.style.left = this.x + 'px';
 		this.node.style.top = this.y + 'px';
 	}
 
-	moveRight() {
-		this.x++;
+	moveRight(factor) {
+		this.x = this.x + factor;
 		this.node.style.left = this.x + 'px';
 	}
 
-	moveLeft() {
-		this.x--;
+	moveLeft(factor) {
+		this.x = this.x - factor;
 		this.node.style.left = this.x + 'px';
 	}
 
-	moveRandomLeftOrRight() {
+	moveRandomLeftOrRight(factor) {
 		if (!this.moveRandomLeftOrRightCounter)
 			this.moveRandomLeftOrRightCounter = {};
 		const f = this.moveRandomLeftOrRightCounter;
@@ -78,16 +78,16 @@ class Butterfly {
 			f.callCount = null;
 		}
 
-		this[ "move" + f.direction ]();
+		this[ "move" + f.direction ](factor);
 	}
 
-	move(fpsTime = 60) {
+	move(factor = 1) {
 		const animate = () => {
 			if (this.y + this.node.scrollHeight < 0) {
-				this.randomGenerator(fpsTime);
+				this.randomGenerator();
 			}
-			this.moveRandomLeftOrRight();
-			this.moveUp();
+			this.moveRandomLeftOrRight(factor);
+			this.moveUp(factor);
 			reqAnimFrame(animate);
 		}
 		reqAnimFrame(animate);
@@ -117,14 +117,14 @@ const srcBrownButterfly = "brownButterfly.gif";
 const body = document.querySelector('body');
 
 const brown = new Butterfly(srcBrownButterfly);
-brown.move(60);
+brown.move();
 const brown1 = new Butterfly(srcBrownButterfly);
-brown1.move(60);
+brown1.move();
 const brown2 = new Butterfly(srcBrownButterfly);
-brown2.move(60);
+brown2.move();
 const blue = new Butterfly(srcBlueButterfly);
-blue.move(60);
+blue.move();
 const blue1 = new Butterfly(srcBlueButterfly);
-blue1.move(60);
+blue1.move();
 const blue2 = new Butterfly(srcBlueButterfly);
-blue2.move(60);
+blue2.move();
