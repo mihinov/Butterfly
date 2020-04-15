@@ -82,33 +82,15 @@ class Butterfly {
 	}
 
 	move(fpsTime = 60) {
-		let fps, fpsInterval, startTime, now, then, elapsed;
-		const startAnimate = (fps = 60) => {
-			fpsInterval = 1000 / fps;
-			then = Date.now();
-			startTime = then;
-			animate();
-		}
 		const animate = () => {
-			let myReq = reqAnimFrame(animate);
-			now = Date.now();
-			elapsed = now - then;
-		    if (elapsed > fpsInterval) {
-		        then = now - (elapsed % fpsInterval);
-		        drawAnimate();
-		    }
-		};
-		//////// Тут происходит анимация
-		const drawAnimate = () => {
 			if (this.y + this.node.scrollHeight < 0) {
 				this.randomGenerator(fpsTime);
 			}
 			this.moveRandomLeftOrRight();
 			this.moveUp();
+			reqAnimFrame(animate);
 		}
-		////// Тут происходит анимация
-
-		startAnimate(fpsTime);
+		reqAnimFrame(animate);
 	}
 }
 
