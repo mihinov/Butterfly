@@ -53,21 +53,28 @@ class Butterfly {
 		const f = this.moveRandomLeftOrRightCounter;
 
 		if( !f.callCount ) f.callCount = 0;
-		const funcRandom = () => {
-			if( !f.maxCount ) f.maxCount = getRandomInt(50, 150);
-			if ( (this.widthWindow - this.x - this.width > f.maxCount) && this.x > f.maxCount && !f.direction ) {
-				f.direction = getRandomInt(0, 1) ? 'Right' : 'Left';
-			} else if (this.widthWindow - this.x - this.width > f.maxCount && !f.direction) {
-				f.direction = "Right";
-			} else if (this.x > f.maxCount && !f.direction) {
-				f.direction = "Left";
-			}
-		};
-		funcRandom();
+		if( !f.maxCount ) f.maxCount = getRandomInt(50, 150);
+		if ( (this.widthWindow - this.x - this.width > f.maxCount) && this.x > f.maxCount && !f.direction ) {
+			f.direction = getRandomInt(0, 1) ? 'Right' : 'Left';
+		} else if (this.widthWindow - this.x - this.width > f.maxCount && !f.direction) {
+			f.direction = "Right";
+		} else if (this.x > f.maxCount && !f.direction) {
+			f.direction = "Left";
+		}
 
 
 		if( ++f.callCount >= f.maxCount ) {
-			funcRandom();
+			f.maxCount = getRandomInt(50, 150);
+			if ( (this.widthWindow - this.x - this.width) > f.maxCount && this.x > f.maxCount) {
+				// Если налево и направо есть место, то случайно можно пойти налево и направо
+				f.direction = getRandomInt(0, 1) ? 'Right' : 'Left';
+			} else if (this.widthWindow - this.x - this.width > f.maxCount) {
+				// Иначе если есть место идти направо, то направо
+				f.direction = "Right";
+			} else if (this.x > f.maxCount) {
+				// Иначе если есть место идти налево, то налево
+				f.direction = "Left";
+			}
 			f.callCount = null;
 		}
 
